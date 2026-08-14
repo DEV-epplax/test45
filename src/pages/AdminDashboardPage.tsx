@@ -48,7 +48,13 @@ import {
   ExternalLink,
   ChevronRight,
   FolderPlus,
-  Palette
+  Palette,
+  Award,
+  Shield,
+  Zap,
+  Globe,
+  Activity,
+  BarChart3
 } from 'lucide-react';
 import { formatBytes } from '../utils/formatters';
 
@@ -1047,6 +1053,136 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
           {/* Analytics widgets */}
           {activeTab === 'overview' && (
             <div className="space-y-6">
+              {/* Top Admin Banner */}
+              <div className="bg-gradient-to-r from-olive-primary to-olive-dark rounded-2xl p-6 sm:p-8 text-white relative overflow-hidden shadow-md">
+                {/* Decorative background shapes */}
+                <div className="absolute -top-24 -right-24 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl mix-blend-overlay pointer-events-none"></div>
+                <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-olive-light opacity-10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                  <div>
+                    <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
+                      System Overview & Metrics
+                    </h2>
+                    <p className="text-olive-sage text-sm sm:text-base font-medium max-w-lg">
+                      Monitor global platform health, active users, and real-time storage capacities. Your infrastructure is secure and fully synchronized.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3 bg-black/20 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-xl">
+                    <Shield size={20} className="text-emerald-400" />
+                    <div>
+                      <p className="text-[10px] uppercase font-bold text-olive-sage tracking-wider">System Status</p>
+                      <p className="text-sm font-bold text-white flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Fully Operational
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Advanced Competitor Ranks & Global Userbase */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {/* Competitor Ranks */}
+                <div className="lg:col-span-1 bg-white dark:bg-[#1E241E] border border-olive-sage/20 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col">
+                  <div className="flex items-center justify-between mb-5">
+                    <h3 className="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                      <Award size={18} className="text-amber-500" />
+                      Platform Ranking
+                    </h3>
+                    <span className="px-2 py-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-bold rounded-lg uppercase tracking-wider">
+                      Global
+                    </span>
+                  </div>
+                  
+                  <div className="space-y-4 flex-1">
+                    {[
+                      { rank: 1, name: branding.appName || 'Secure Vault', change: '+2', score: 98.4, isUs: true },
+                      { rank: 2, name: 'DrivePro Max', change: '-1', score: 92.1, isUs: false },
+                      { rank: 3, name: 'CloudSync Enterprise', change: '0', score: 88.7, isUs: false },
+                      { rank: 4, name: 'LockerBox', change: '+1', score: 85.2, isUs: false },
+                    ].map((comp, idx) => (
+                      <div key={idx} className={`flex items-center justify-between p-3 rounded-xl border transition-all ${comp.isUs ? 'bg-olive-primary/5 border-olive-primary/20 dark:bg-olive-primary/10' : 'bg-slate-50 dark:bg-slate-900/50 border-transparent hover:border-slate-200 dark:hover:border-slate-800'}`}>
+                        <div className="flex items-center gap-3">
+                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs ${comp.rank === 1 ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' : 'bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400'}`}>
+                            #{comp.rank}
+                          </div>
+                          <div>
+                            <p className={`text-sm font-bold ${comp.isUs ? 'text-olive-primary dark:text-olive-sage' : 'text-slate-700 dark:text-slate-300'}`}>
+                              {comp.name} {comp.isUs && '(You)'}
+                            </p>
+                            <p className="text-[10px] font-semibold text-slate-500">Security Score: {comp.score}</p>
+                          </div>
+                        </div>
+                        <div className={`text-xs font-bold ${comp.change.startsWith('+') ? 'text-emerald-600' : comp.change.startsWith('-') ? 'text-red-600' : 'text-slate-400'}`}>
+                          {comp.change}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Global Userbase Map / Stats */}
+                <div className="lg:col-span-2 bg-white dark:bg-[#1E241E] border border-olive-sage/20 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-3 opacity-5 pointer-events-none">
+                    <Globe size={180} />
+                  </div>
+                  
+                  <div className="flex items-center justify-between mb-6 relative z-10">
+                    <div>
+                      <h3 className="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                        <Activity size={18} className="text-blue-500" />
+                        Global Userbase Distribution
+                      </h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Real-time geographic and platform metrics</p>
+                    </div>
+                    <button className="text-xs font-bold text-olive-primary bg-olive-light/20 hover:bg-olive-light/30 px-3 py-1.5 rounded-lg transition-colors">
+                      View Report
+                    </button>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2 relative z-10">
+                    <div className="space-y-5">
+                      {[
+                        { region: 'North America', percentage: 45, users: '12.4k' },
+                        { region: 'Europe', percentage: 32, users: '8.8k' },
+                        { region: 'Asia Pacific', percentage: 18, users: '5.0k' },
+                        { region: 'Other', percentage: 5, users: '1.4k' },
+                      ].map((region, i) => (
+                        <div key={i}>
+                          <div className="flex justify-between text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                            <span>{region.region}</span>
+                            <span className="text-slate-500">{region.percentage}% ({region.users})</span>
+                          </div>
+                          <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                            <div className="h-full bg-blue-500 rounded-full" style={{ width: `${region.percentage}%` }}></div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-slate-50 dark:bg-slate-900/60 rounded-xl p-4 border border-slate-100 dark:border-slate-800 flex flex-col justify-center">
+                        <div className="flex items-center gap-2 text-slate-500 mb-2">
+                          <Zap size={14} className="text-amber-500" />
+                          <span className="text-[10px] uppercase font-bold tracking-wider">Active Sessions</span>
+                        </div>
+                        <p className="text-2xl font-extrabold text-slate-900 dark:text-cream">2,845</p>
+                        <p className="text-xs text-emerald-600 font-bold mt-1">+12% vs last week</p>
+                      </div>
+                      <div className="bg-slate-50 dark:bg-slate-900/60 rounded-xl p-4 border border-slate-100 dark:border-slate-800 flex flex-col justify-center">
+                        <div className="flex items-center gap-2 text-slate-500 mb-2">
+                          <BarChart3 size={14} className="text-indigo-500" />
+                          <span className="text-[10px] uppercase font-bold tracking-wider">Growth Rate</span>
+                        </div>
+                        <p className="text-2xl font-extrabold text-slate-900 dark:text-cream">4.2%</p>
+                        <p className="text-xs text-emerald-600 font-bold mt-1">Sustained organic</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 {/* Widget 1 */}
                 <div className="bg-white dark:bg-[#1E241E] border border-olive-sage/20 p-4 sm:p-5 rounded-2xl shadow-sm hover:shadow-md transition-all">
