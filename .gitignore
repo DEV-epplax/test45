@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+.pnpm-store
+
+# Build & Production Outputs
+dist/
+build/
+coverage/
+
+# Logs & System Files
+*.log
+.DS_Store
+Thumbs.db
+
+# Environment & Secret Files
+.env
+.env.local
+.env.*.local
+.env*
+!.env.example
+
+# Development & Patch Scripts
+fix_*.js
+patch_*.js
+test-*.js
+update_*.js
+

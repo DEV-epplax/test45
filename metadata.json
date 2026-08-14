@@ -1,0 +1,6 @@
+{
+  "name": "IFFL Cloud Storage Platform",
+  "description": "Secure, encrypted personal cloud storage and file sharing platform featuring Olive Green Glassmorphism styling.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
