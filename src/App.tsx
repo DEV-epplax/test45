@@ -114,7 +114,9 @@ export default function App() {
   };
 
   const handleLoginSuccess = (email: string, name?: string) => {
-    const isLocalAdmin = email.trim().toLowerCase() === 'admin@t.co';
+    const isLocalAdmin = email.
+    
+    trim().toLowerCase() === 'admin@t.co';
     const newUser = {
       ...user,
       email: email,
